@@ -1,7 +1,7 @@
 {
   "name": "grid",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve ./example/main.js",
     "build": "vue-cli-service build --target lib --name vue-grid ./src/index.js",
