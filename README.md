@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# grid
+# Vue-Grid2
 
 ## Project setup
 ```
@@ -31,4 +30,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 =======
 # vue-grid2
 Grid/TreeGrid powered by Vue
->>>>>>> remotes/vue-grid2/master
