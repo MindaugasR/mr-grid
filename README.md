@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # grid
 
 ## Project setup
@@ -27,3 +28,7 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# vue-grid2
+Grid/TreeGrid powered by Vue
+>>>>>>> remotes/vue-grid2/master
