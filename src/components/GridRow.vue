@@ -1,5 +1,6 @@
 <template>
 	<div class="grid-row">
+		<!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
 		<div
 			v-for="(column,cidx) in columns"
 			:key="column.id"

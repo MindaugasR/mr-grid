@@ -1,8 +1,10 @@
-# Vue-Grid2
+# mr-grid
 
 ## Project setup
 ```
-yarn install
+yarn add mr-grid 
+or
+npm i mr-grid
 ```
 
 ### Compiles and hot-reloads for development
@@ -13,11 +15,6 @@ yarn run serve
 ### Compiles and minifies for production
 ```
 yarn run build
-```
-
-### Run your tests
-```
-yarn run test
 ```
 
 ### Lints and fixes files

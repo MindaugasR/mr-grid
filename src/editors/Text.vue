@@ -20,7 +20,7 @@
 		},
 		watch: {
 			text: function(val) {
-				this.$emit('update:value', this.text)
+				this.$emit('update:value', val)
 			}
 		},
 		mounted() {

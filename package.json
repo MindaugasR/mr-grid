@@ -1,7 +1,13 @@
 {
-  "name": "grid",
+  "name": "mr-grid",
+  "author": "Mindaugas Rimkus",
   "version": "0.1.0",
   "private": false,
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MindaugasR/mr-grid/issues"
+  },
+  "homepage": "https://github.com/MindaugasR/mr-grid#readme",
   "scripts": {
     "serve": "vue-cli-service serve ./example/main.js",
     "build": "vue-cli-service build --target lib --name vue-grid ./src/index.js",

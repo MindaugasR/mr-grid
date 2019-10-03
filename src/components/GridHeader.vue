@@ -2,6 +2,7 @@
 	<div class="grid-header">
 		<div class="resize-line" ref="resizeLine"></div>
 		<template  v-if="!settings.hideHeader">
+			<!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
 			<div class="grid-header-row">
 				<div
 					v-for="(column,index) in columns"

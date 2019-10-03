@@ -1,6 +1,7 @@
 <template>
 	<div class="grid-footer">
 		<template  v-if="!settings.hideFooter">
+			<!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
 			<div
 				v-for="(column,index) in columns"
 				:key="index"
@@ -29,17 +30,19 @@
 		},
 		methods: {
 			footer(column) {
+				let title = column.title
 				if (column.footer !== undefined) {
-					if (column.footer.text !== undefined)
-						return column.footer.text
 					if (typeof column.footer.template !== undefined) {
 						switch (typeof column.footer.template) {
-							case 'object': return column.footer.template; break;
-							case 'function': return column.footer.template(); break;
+							case 'object': title =  column.footer.template; break;
+							case 'function': title = column.footer.template(); break;
 						}
 					}
+					if (column.footer.text !== undefined)
+						title =  column.footer.text
+					
 				}
-				return column.title
+				return title
 			}
 		}
 	}

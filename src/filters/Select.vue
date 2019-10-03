@@ -2,7 +2,7 @@
 	<div>
 		<select @change="filterSelect" v-model="selectedData">
 			<option value=""></option>
-			<option v-for="(option,value,index) in options" :value="value">{{value}}</option>
+			<option v-for="(option,value) in options" :value="value" :key="value">{{value}}</option>
 		</select>
 	</div>
 </template>
