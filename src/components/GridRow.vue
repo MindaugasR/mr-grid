@@ -1,6 +1,5 @@
 <template>
 	<div class="grid-row">
-		<!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
 		<div
 			v-for="(column,cidx) in columns"
 			:key="column.id"
@@ -30,7 +29,7 @@
 				class="grid-editor"
 				@close-editor="closeEditor(row,column)"
 			></component>
-			<div v-else @click="openEditor($event,row,column)">{{ row.columns[column.id] }}</div>
+			<div v-else @click="openEditor($event,row,column)" style="height: 40px">{{ row.columns[column.id] }}</div>
 		</div>
 		<template v-if="haveChildrens">
 			<grid-row v-for="child in row[settings.children]" :row="child" :level="(level + 1)" :key="child.id"></grid-row>

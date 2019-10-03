@@ -83,7 +83,6 @@
 				Object.keys(val).forEach((key) => {
 					this.filter.holder[key] = val[key]
 				})
-				
 				Object.keys(this.filter.holder).forEach((column) => {
 					if (this.$refs['filter_' + column] !== undefined) {
 						if (typeof this.$refs['filter_' + column][0].filter === 'undefined')
@@ -164,6 +163,7 @@
 						row.children = this.filterData(row.children,column,text)
 					if (row.children !== undefined && row.children.length > 0)
 						return true
+					
 					return row.columns[column].toString().toLowerCase().indexOf(text) > -1
 				})
 				return r;

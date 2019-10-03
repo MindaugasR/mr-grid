@@ -1,5 +1,7 @@
 # mr-grid
 
+![mr-grid Showcase](https://i.imgur.com/5xPdLED.gif)
+
 ## Project setup
 ```
 yarn add mr-grid 

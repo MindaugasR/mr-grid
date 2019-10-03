@@ -12,7 +12,7 @@
 		components: {GridRow},
 		computed: {
 			...mapState(['rows'])
-		},
+		}
 	}
 </script>
 
