@@ -1,7 +1,6 @@
 <template>
 	<div class="grid-footer">
 		<template  v-if="!settings.hideFooter">
-			<!-- eslint-disable vue/no-use-v-if-with-v-for,vue/no-confusing-v-for-v-if -->
 			<div
 				v-for="(column,index) in columns"
 				:key="index"
@@ -12,7 +11,6 @@
 				:class="['grid-footer-cell',column.fixed?'grid_column_fixed':'']"
 				role="column"
 			>
-				
 				<div class="grid-footer-title">
 					<slot :name="`footer.` + column.id" :column="column" :rows="rows" :text="column.title">{{footer(column)}}</slot>
 				</div>
@@ -26,7 +24,13 @@
 	export default {
 		name: "GridFooter",
 		computed: {
-			...mapState(['settings','columns','rows']),
+			...mapState(['columns','rows']),
+			columns() {
+				return this.$store.state.TreeGridCollection.columns
+			},
+			settings() {
+				return this.$store.state.TreeGridCollection.settings
+			}
 		},
 		methods: {
 			footer(column) {
@@ -40,7 +44,6 @@
 					}
 					if (column.footer.text !== undefined)
 						title =  column.footer.text
-					
 				}
 				return title
 			}

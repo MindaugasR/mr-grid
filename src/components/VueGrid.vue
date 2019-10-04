@@ -13,14 +13,13 @@
 	import GridHeader from '../components/GridHeader'
 	import GridBody from '../components/GridBody'
 	import GridFooter from '../components/GridFooter'
-	import {mapState} from 'vuex'
+
 	export default {
 		name: 'VueGrid',
 		components: {GridHeader,GridBody,GridFooter},
 		data() {
 			return {
 				TableID: 'TreeGrid-' + Math.floor(Math.random() * 101),
-				data: [],
 				defaultOptions: {
 					width: '100%',
 					height: '100%',
@@ -46,9 +45,9 @@
 			options: Object
 		},
 		computed: {
-			...mapState({
-				settings: 'settings'
-			}),
+			settings() {
+				return this.$store.state.TreeGridCollection.settings
+			},
 			cfg() {
 				return {
 					...this.defaultOptions,
@@ -60,23 +59,21 @@
 			options: {
 				deep: true,
 				handler: function() {
-					this.$store.commit('settings',this.cfg)
+					this.$store.commit('TreeGridCollection/addSettings',this.cfg)
 				}
 			},
 			columns: {
 				deep: true,
 				handler: function(val) {
-					this.$store.commit('columns',val)
-					this.data = this.updateRowsColumns(this.data)
-					this.$store.commit('rows',[...this.data])
+					this.$store.commit('TreeGridCollection/addColumns',val)
+					let data = this.updateRowsColumns(this.rows)
+					this.$store.commit('TreeGridCollection/updateRows',data)
 				}
 			},
 			rows: {
 				deep: true,
 				handler: function(val) {
-					this.data = val
-					this.$store.commit('data',[...this.data])
-					this.$store.commit('rows',[...this.data])
+					this.$store.commit('TreeGridCollection/updateRows',val)
 				}
 			},
 		},
@@ -99,11 +96,9 @@
 			}
 		},
 		mounted() {
-			this.data = this.rows
-			this.$store.commit('columns',this.columns)
-			this.$store.commit('data',[...this.data])
-			this.$store.commit('rows',[...this.data])
-			this.$store.commit('settings',this.cfg)
+			this.$store.commit('TreeGridCollection/addColumns',this.columns)
+			this.$store.commit('TreeGridCollection/addRows',this.rows)
+			this.$store.commit('TreeGridCollection/addSettings',this.cfg)
 		}
 	}
 </script>

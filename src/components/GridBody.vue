@@ -1,17 +1,21 @@
 <template>
 	<div>
-		<grid-row v-for="(row,index) in rows" :row="row" :level="1" :key="index"></grid-row>
+		<template v-for="(row,index) in rows">
+			<grid-row v-if="row.$visible || row.$visible === undefined" :row="row" :level="1" :key="index"></grid-row>
+		</template>
 	</div>
 </template>
 
 <script>
 	import GridRow from './GridRow'
-	import {mapState} from 'vuex'
+
 	export default {
 		name: "GridBody",
 		components: {GridRow},
 		computed: {
-			...mapState(['rows'])
+			rows() {
+				return this.$store.state.TreeGridCollection.rows
+			}
 		}
 	}
 </script>

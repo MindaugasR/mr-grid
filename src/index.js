@@ -1,12 +1,16 @@
 import Vuex from 'vuex'
 import VueGrid from './components/VueGrid.vue'
-import store from './utils/store'
+import TreeGridCollection from './store/TreeGridCollection'
 import './grid.scss'
 
 export default function install(Vue) {
 	Vue.use(Vuex)
 	Vue.component('VueGrid', VueGrid)
-	Vue.prototype.$store = new Vuex.Store(store)
+	Vue.prototype.$store = new Vuex.Store({
+		modules: {
+			TreeGridCollection: TreeGridCollection
+		}
+	})
 	
 	
 	const editors = require.context('./editors/', true, /\.vue$/i)

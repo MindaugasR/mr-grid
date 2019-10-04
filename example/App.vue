@@ -120,9 +120,11 @@
 					treeColumn: 'text',
 					hideHeader: false,
 					hideFooter: false,
+					selection: true,
 					edit: {
 						enable: true,
-						type: 'cell'
+						type: 'cell',
+						mode: 'dblclick'
 					}
 				}
 			}

@@ -8,7 +8,6 @@
 </template>
 
 <script>
-	import {mapState} from 'vuex'
 	export default {
 		name: "Select_Filter",
 		data() {
@@ -18,7 +17,9 @@
 			}
 		},
 		computed: {
-			...mapState(['data'])
+			rows() {
+				return this.$store.state.TreeGridCollection.rows
+			}
 		},
 		props: {
 			column: Object
@@ -29,7 +30,7 @@
 		methods: {
 			getOptions() {
 				this.options = {}
-				this.data.forEach((row) => {
+				this.rows.forEach((row) => {
 					this.options[row.columns[this.column.id].toString()] = true
 				})
 			},

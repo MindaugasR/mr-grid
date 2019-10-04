@@ -1,25 +1,30 @@
 export default {
+	namespaced: true,
 	state: {
-		columns: [],
+		settings: {},
 		rows: [],
-		data: [],
-		settings: [],
-		editor: {}
+		columns: [],
+		editor: {},
+		selectedRow: {}
 	},
 	mutations: {
-		columns (state,columns) {
-			state.columns = columns
-		},
-		data (state,rows) {
-			state.data = rows
-		},
-		rows (state,rows) {
+		addRows(state,rows) {
 			state.rows = rows
 		},
-		settings (state,settings) {
-			state.settings = settings
+		updateRows(state,rows) {
+			state.rows = rows
 		},
-		changeColumn(state,obj) {
+		selectRow(state,{row,column}) {
+			state.selectedRow = {}
+			state.selectedRow[row.id.toString()] = column.id
+		},
+		addSettings(state,settings) {
+			state.settings = Object.assign({}, this.settings, settings)
+		},
+		addColumns(state,columns) {
+			state.columns = columns
+		},
+		updateColumn(state,obj) {
 			state.columns[obj.index] = obj.column
 		},
 		openEditor(state,obj) {
@@ -46,28 +51,20 @@ export default {
 				break;
 			}
 		},
-		closeEditor(state,row) {
-			if (state.editor[row.id] !== undefined) {
-				state.editor = {}
-			}
+		closeEditor(state) {
+			state.editor = {}
 		}
 	},
+	actions: { },
 	getters: {
 		getRows: (state) => {
 			return state.rows
 		},
-		getRowChildrens: (state) => (index) => {
-			if (index === undefined) {
-				return state.rows
-			}
-			else {
-				let split = index.split(".")
-				let rows = state.rows
-				split.forEach((part) => {
-					rows = rows[part]
-				})
-				return rows.children
-			}
+		getColumns(state) {
+			return state.columns
+		},
+		getSettings(state) {
+			return state.settings
 		}
 	}
 }

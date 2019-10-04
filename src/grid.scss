@@ -68,6 +68,12 @@
 .number-cell {
 	text-align: right;
 }
+.row-selected > .grid-cell {
+	background: #edeff5;
+}
+.row-selected > .grid-cell:first-child {
+	box-shadow: inset 2px 0 #1CA1C1;
+}
 .grid-cell {
 	font-size: 14px;
 	color: rgba(0,0,0,.7);
